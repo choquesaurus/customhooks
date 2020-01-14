@@ -1,24 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
+import React,{useState} from 'react';
 import './App.css';
-
+import UseLocalStorage from "./customhooks/UseLocalStorageState";
+//import UseLocalStorageState from './customhooks/UseLocalStorageState';
 function App() {
+  const [contador,setcontador] = UseLocalStorage('contador',0);
+  const [data,setData]=UseLocalStorage('data','a');
+  const [numero,setNumero]= useState(0);
+  //const [contador,setcontador] = UseLocalStorage('contador',0);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button onClick={()=>{setNumero(numero+1)}}>
+        Numero
+      </button>
+      {numero}
+        <button onClick={()=>setcontador(contador+1)}>
+            Aumentar
+        </button>
+        <button onClick={()=>setcontador(contador-1)}>
+            reducir
+        </button>
+        <button onClick={()=>setData(data+'a')}>
+          adicionar  palabra
+        </button>
+        {contador}
+        {data}
     </div>
   );
 }
